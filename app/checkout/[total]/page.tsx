@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import { createQR } from "@solana/pay"; // error: document is undefined, as nextjs server does not have document's methods as in vanilla js
+import { createQR, encodeURL } from "@solana/pay"; // error: document is undefined, as nextjs server does not have document's methods as in vanilla js
 import { useEffect, useRef } from "react";
 
 
@@ -17,7 +17,14 @@ export default function Page({params}: { params: { total: string }}) {
   // }
 
   useEffect(() => {
-    const qrCode = createQR("solana:9TQ1czXPRY1zeQR2cYeVVg4vmKJPXQwX6GGdkuf7NU5f?amount=0.001&reference=DFUVvLjq7QMW6TfRk1guCeSpHTTUdSAJ6bAUTniSBGG&label=Nhi+is+dumb+store&message=Nhi%2520is%2520dumb%2520store%2520-%2520your%2520order%2520-%2520%23001234&memo=JC%234098")
+    // get url link and pass into createQR()
+    const link = new URL(
+      `https://78d1-142-118-195-176.ngrok-free.app/api/checkout?total=${params.total}`
+    );
+
+    const url = encodeURL({link})
+    console.log({url})
+    const qrCode = createQR(url)
 
     if (ref.current) {
       qrCode.append(ref.current)
