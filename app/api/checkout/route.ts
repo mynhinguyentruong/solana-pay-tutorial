@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     FAKE_USDC_ADDRESS,
     merchantATA.address,
     payer,
-    BigInt(total),
+    BigInt(Math.pow(10, mint.decimals) * total),
     mint.decimals
   );
   const references = [new Keypair().publicKey];
