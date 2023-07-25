@@ -29,7 +29,7 @@ export default function Page({params}: { params: { total: string }}) {
     if (ref.current) {
       qrCode.append(ref.current)
     }
-  },[])
+  },[params.total])
     
     return (
         

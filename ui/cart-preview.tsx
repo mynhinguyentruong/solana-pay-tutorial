@@ -9,6 +9,7 @@ import Link from 'next/link'
 
 export default function CartPreview({open, setOpen, products}: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>, products: Product[]}) {
 
+    console.log("Cart component loaded???")
     const total = useCallback(() => {
         return products?.reduce((acc, curr) => acc + curr.price, 0)
     }, [products])
