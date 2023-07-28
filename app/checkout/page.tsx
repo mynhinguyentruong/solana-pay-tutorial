@@ -16,7 +16,7 @@ export default function Page({params}: { params: { total: string }}) {
   useEffect(() => {
     // get url link and pass into createQR()
     const link = new URL(
-      `https://78d1-142-118-195-176.ngrok-free.app/api/checkout?total=${total}&store=${store}`
+      `https://8f5d-142-118-195-176.ngrok-free.app/api/checkout?total=${total}&store=${store}`
     );
 
     const url = encodeURL({link})

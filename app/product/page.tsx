@@ -57,8 +57,8 @@ export default function Page() {
     }
 
     const total = useCallback(() => {
-        return products?.reduce((acc, curr) => acc + curr.price, 0)
-    }, [products])
+        return cartItems?.reduce((acc, curr) => acc + curr.price, 0)
+    }, [cartItems])
     return (
 <div className="">
   <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -131,7 +131,7 @@ export default function Page() {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {products.map((product) => (
+                            {cartItems.map((product) => (
                               <li key={product.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <Image
