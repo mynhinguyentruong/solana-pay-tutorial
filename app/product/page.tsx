@@ -6,6 +6,8 @@ import { Dispatch, Fragment, SetStateAction, useCallback, useState } from 'react
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link"
+import { useSearchParams } from 'next/navigation'
+
 
 export type Product = {
     id: number;
@@ -44,6 +46,9 @@ const products = [
   // More products...
 ]
 export default function Page() {
+    const searchParams = useSearchParams()
+    const store = searchParams.get('store')
+
     const [open, setOpen] = useState<boolean>(true)
     const [cartItems, setCartItems] = useState<Product[]>([])
 

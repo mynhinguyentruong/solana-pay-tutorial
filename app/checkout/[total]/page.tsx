@@ -9,13 +9,6 @@ import { useEffect, useRef } from "react";
 export default function Page({params}: { params: { total: string }}) {
   const ref = useRef(null)
 
-  // async function getQRCode() {
-  //   const qrCode = createQR("solana:9TQ1czXPRY1zeQR2cYeVVg4vmKJPXQwX6GGdkuf7NU5f?amount=0.001&reference=DFUVvLjq7QMW6TfRk1guCeSpHTTUdSAJ6bAUTniSBGG&label=Nhi+is+dumb+store&message=Nhi%2520is%2520dumb%2520store%2520-%2520your%2520order%2520-%2520%23001234&memo=JC%234098")
-  //   const qrBlob = (await qrCode.getRawData('png'))!!
-  //   const src = URL.createObjectURL(qrBlob)
-  //   return src
-  // }
-
   useEffect(() => {
     // get url link and pass into createQR()
     const link = new URL(
