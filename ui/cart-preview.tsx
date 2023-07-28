@@ -111,7 +111,7 @@ export default function CartPreview({open, setOpen, products}: {open: boolean, s
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
                         <Link
-                          href={`/checkout/${total()}`}
+                          href={`/checkout/?total=${total()}`}
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
                           Checkout

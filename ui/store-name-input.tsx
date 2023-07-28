@@ -7,10 +7,10 @@ export default function StoreNameInput() {
     const router = useRouter()
     const [userInput, setUserInput] = useState("")
 
-    const navigate = () => {
+    const navigate = useCallback(() => {
         const encodeString = encodeURI(userInput)
-        router.push(`/product?${encodeString}`)
-    }
+        router.push(`/product?store=${encodeString}`)
+    }, [userInput, router])
 
     return (
         <>
@@ -28,8 +28,8 @@ export default function StoreNameInput() {
             <div className="col-span-full">
                 <button 
                     type="button"
-                    onClick={() => router.push(`/product?store=${userInput}`)}
-                    className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black" type="submit">
+                    onClick={navigate}
+                    className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"> 
                     Generate Store
                 </button>
             </div>

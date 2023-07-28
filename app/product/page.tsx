@@ -47,7 +47,7 @@ const products = [
 ]
 export default function Page() {
     const searchParams = useSearchParams()
-    const store = searchParams.get('store')
+    const store = searchParams.get('store') || "Store"
 
     const [open, setOpen] = useState<boolean>(true)
     const [cartItems, setCartItems] = useState<Product[]>([])
@@ -181,7 +181,7 @@ export default function Page() {
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
                         <Link
-                          href={`/checkout/${total()}`}
+                          href={`/checkout/?total=${total()}&store=${store}`}
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
                           Checkout

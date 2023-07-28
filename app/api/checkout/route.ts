@@ -27,9 +27,12 @@ const MERCHANT_WALLET_KEYPAIR = Keypair.fromSecretKey(
 
 console.log("Merchant wallet address: ", MERCHANT_WALLET.toBase58());
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const store = decodeURI(searchParams.get("store") as string) || "My Store";
+
   return NextResponse.json({
-    label: "The Incredible Store",
+    label: store,
     icon: "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
   });
 }

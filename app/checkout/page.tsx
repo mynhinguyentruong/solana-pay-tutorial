@@ -3,16 +3,20 @@
 import Image from "next/image"
 import { createQR, encodeURL } from "@solana/pay"; // error: document is undefined, as nextjs server does not have document's methods as in vanilla js
 import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 
 
 export default function Page({params}: { params: { total: string }}) {
   const ref = useRef(null)
+  const searchParams = useSearchParams()
+  const store = searchParams.get('store') || "Store"
+  const total = searchParams.get('total') || 1
 
   useEffect(() => {
     // get url link and pass into createQR()
     const link = new URL(
-      `https://78d1-142-118-195-176.ngrok-free.app/api/checkout?total=${params.total}`
+      `https://78d1-142-118-195-176.ngrok-free.app/api/checkout?total=${total}&store=${store}`
     );
 
     const url = encodeURL({link})
@@ -47,7 +51,7 @@ export default function Page({params}: { params: { total: string }}) {
                   Order Total
                 </label>
                 {/* <input className="block w-full px-6 py-3 text-black bg-white border border-gray-200 appearance-none rounded-xl placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm" placeholder="Your name"/> */}
-                <p className="text-sm font-medium text-gray-600">{params.total} USDC</p>
+                <p className="text-sm font-medium text-gray-600">{total} USDC</p>
               </div>
               <div className="col-span-full">
                 <label className="block mb-3 text-sm font-medium text-gray-600" id="company">
