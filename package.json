@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "airdrop": "solana airdrop 2 DoQPrmoKfKiNnX8yVqKPedUkpCAEYq3RXsTvPmTCwmEK --url https://api.devnet.solana.com"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
